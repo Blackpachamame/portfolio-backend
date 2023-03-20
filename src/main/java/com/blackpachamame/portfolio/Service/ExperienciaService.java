@@ -2,10 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.blackpachamame.portfolio.Servicio;
+package com.blackpachamame.portfolio.Service;
 
-import com.blackpachamame.portfolio.Entidad.Experiencia;
-import com.blackpachamame.portfolio.Repositorio.IExperienciaRepository;
+import com.blackpachamame.portfolio.Entity.Experiencia;
+import com.blackpachamame.portfolio.Repository.IExperienciaRepository;
 import jakarta.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
@@ -19,34 +19,35 @@ import org.springframework.stereotype.Service;
 @Service
 @Transactional
 public class ExperienciaService {
+
     @Autowired
     IExperienciaRepository experienciaR;
-    
-    public List<Experiencia> list(){
+
+    public List<Experiencia> list() {
         return experienciaR.findAll();
     }
-    
-    public Optional<Experiencia> getOne(int id){
+
+    public Optional<Experiencia> getOne(int id) {
         return experienciaR.findById(id);
     }
-    
-    public Optional<Experiencia> getByNombreE(String nombreE){
+
+    public Optional<Experiencia> getByNombreE(String nombreE) {
         return experienciaR.findByNombreE(nombreE);
     }
-    
-    public void save(Experiencia expe){
+
+    public void save(Experiencia expe) {
         experienciaR.save(expe);
     }
-    
-    public void delete(int id){
+
+    public void delete(int id) {
         experienciaR.deleteById(id);
     }
-    
-    public boolean existsById(int id){
+
+    public boolean existsById(int id) {
         return experienciaR.existsById(id);
     }
-    
-    public boolean existsByNombreE(String nombreE){
+
+    public boolean existsByNombreE(String nombreE) {
         return experienciaR.existsByNombreE(nombreE);
     }
 }

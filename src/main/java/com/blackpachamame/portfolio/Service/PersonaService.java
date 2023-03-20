@@ -2,44 +2,52 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.blackpachamame.portfolio.Servicio;
+package com.blackpachamame.portfolio.Service;
 
-import com.blackpachamame.portfolio.Entidad.Persona;
-import com.blackpachamame.portfolio.Interfaz.IPersonaServicio;
-import com.blackpachamame.portfolio.Repositorio.IPersonaRepositorio;
+import com.blackpachamame.portfolio.Entity.Persona;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import com.blackpachamame.portfolio.Repository.IPersonaRepository;
+import jakarta.transaction.Transactional;
+import java.util.Optional;
 
 /**
  *
  * @author Travaglini
  */
-
 @Service
-public class ImpPersonaServicio implements IPersonaServicio {
-    @Autowired IPersonaRepositorio ipersonaRepositorio;
+@Transactional
+public class PersonaService {
 
-    @Override
-    public List<Persona> getPersona() {
-        List<Persona> persona = ipersonaRepositorio.findAll();
-        return persona;
+    @Autowired
+    IPersonaRepository ipersonaRepository;
+
+    public List<Persona> list() {
+        return ipersonaRepository.findAll();
     }
 
-    @Override
-    public void savePersona(Persona persona) {
-        ipersonaRepositorio.save(persona);
+    public Optional<Persona> getOne(int id) {
+        return ipersonaRepository.findById(id);
     }
 
-    @Override
-    public void deletePersona(Long id) {
-        ipersonaRepositorio.deleteById(id);
+    public Optional<Persona> getByNombre(String nombre) {
+        return ipersonaRepository.findByNombre(nombre);
     }
 
-    @Override
-    public Persona findPersona(Long id) {
-        Persona persona = ipersonaRepositorio.findById(id).orElse(null);
-        return persona;
+    public void save(Persona persona) {
+        ipersonaRepository.save(persona);
     }
-    
+
+    public void delete(int id) {
+        ipersonaRepository.deleteById(id);
+    }
+
+    public boolean existsById(int id) {
+        return ipersonaRepository.existsById(id);
+    }
+
+    public boolean existsByNombre(String nombre) {
+        return ipersonaRepository.existsByNombre(nombre);
+    }
 }

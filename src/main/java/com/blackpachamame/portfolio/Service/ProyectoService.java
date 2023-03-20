@@ -2,10 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.blackpachamame.portfolio.Servicio;
+package com.blackpachamame.portfolio.Service;
 
-import com.blackpachamame.portfolio.Entidad.Proyecto;
-import com.blackpachamame.portfolio.Repositorio.IProyectoRepository;
+import com.blackpachamame.portfolio.Entity.Proyecto;
+import com.blackpachamame.portfolio.Repository.IProyectoRepository;
 import jakarta.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
@@ -19,34 +19,35 @@ import org.springframework.stereotype.Service;
 @Service
 @Transactional
 public class ProyectoService {
+
     @Autowired
     IProyectoRepository proyectoR;
-    
-    public List<Proyecto> list(){
+
+    public List<Proyecto> list() {
         return proyectoR.findAll();
     }
-    
-    public Optional<Proyecto> getOne(int id){
+
+    public Optional<Proyecto> getOne(int id) {
         return proyectoR.findById(id);
     }
-    
-    public Optional<Proyecto> getByNombre(String nombre){
+
+    public Optional<Proyecto> getByNombre(String nombre) {
         return proyectoR.findByNombre(nombre);
     }
-    
-    public void save(Proyecto proyecto){
+
+    public void save(Proyecto proyecto) {
         proyectoR.save(proyecto);
     }
-    
-    public void delete(int id){
+
+    public void delete(int id) {
         proyectoR.deleteById(id);
     }
-    
-    public boolean existsById(int id){
+
+    public boolean existsById(int id) {
         return proyectoR.existsById(id);
     }
-    
-    public boolean existsByNombre(String nombre){
+
+    public boolean existsByNombre(String nombre) {
         return proyectoR.existsByNombre(nombre);
     }
 }

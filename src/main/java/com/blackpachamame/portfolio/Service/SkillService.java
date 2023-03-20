@@ -2,10 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.blackpachamame.portfolio.Servicio;
+package com.blackpachamame.portfolio.Service;
 
-import com.blackpachamame.portfolio.Entidad.Skill;
-import com.blackpachamame.portfolio.Repositorio.ISkillRepository;
+import com.blackpachamame.portfolio.Entity.Skill;
+import com.blackpachamame.portfolio.Repository.ISkillRepository;
 import jakarta.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;

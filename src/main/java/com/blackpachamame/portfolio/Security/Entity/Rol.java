@@ -17,18 +17,17 @@ import jakarta.validation.constraints.NotNull;
  *
  * @author Travaglini
  */
-
 @Entity
 public class Rol {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @NotNull
     @Enumerated(EnumType.STRING)
     private RolNombre rolNombre;
-    
-    //Constructor
 
+    //Constructor
     public Rol() {
     }
 
@@ -51,5 +50,5 @@ public class Rol {
     public void setRolNombre(RolNombre rolNombre) {
         this.rolNombre = rolNombre;
     }
-    
+
 }

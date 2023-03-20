@@ -2,12 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.blackpachamame.portfolio.Controlador;
+package com.blackpachamame.portfolio.Controller;
 
 import com.blackpachamame.portfolio.Dto.SkillDto;
-import com.blackpachamame.portfolio.Entidad.Skill;
+import com.blackpachamame.portfolio.Entity.Skill;
 import com.blackpachamame.portfolio.Security.Controller.Mensaje;
-import com.blackpachamame.portfolio.Servicio.SkillService;
+import com.blackpachamame.portfolio.Service.SkillService;
 import java.util.List;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;

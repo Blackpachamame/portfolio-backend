@@ -2,12 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.blackpachamame.portfolio.Controlador;
+package com.blackpachamame.portfolio.Controller;
 
 import com.blackpachamame.portfolio.Dto.EducacionDto;
-import com.blackpachamame.portfolio.Entidad.Educacion;
+import com.blackpachamame.portfolio.Entity.Educacion;
 import com.blackpachamame.portfolio.Security.Controller.Mensaje;
-import com.blackpachamame.portfolio.Servicio.EducacionService;
+import com.blackpachamame.portfolio.Service.EducacionService;
 import java.util.List;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,52 +50,52 @@ public class EducacionController {
         Educacion educacion = educacionS.getOne(id).get();
         return new ResponseEntity(educacion, HttpStatus.OK);
     }
-    
+
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<?> delete(@PathVariable("id") int id){
-        if(!educacionS.existsById(id)){
+    public ResponseEntity<?> delete(@PathVariable("id") int id) {
+        if (!educacionS.existsById(id)) {
             return new ResponseEntity(new Mensaje("No existe el ID"), HttpStatus.NOT_FOUND);
         }
         educacionS.delete(id);
         return new ResponseEntity(new Mensaje("Educación eliminada"), HttpStatus.OK);
     }
-    
+
     @PostMapping("/create")
-    public ResponseEntity<?> create(@RequestBody EducacionDto dtoeducacion){
-        if(StringUtils.isBlank(dtoeducacion.getNombreE())){
+    public ResponseEntity<?> create(@RequestBody EducacionDto dtoeducacion) {
+        if (StringUtils.isBlank(dtoeducacion.getNombreE())) {
             return new ResponseEntity(new Mensaje("El nombre es obligatorio"), HttpStatus.BAD_REQUEST);
         }
-        if(educacionS.existsByNombreE(dtoeducacion.getNombreE())){
+        if (educacionS.existsByNombreE(dtoeducacion.getNombreE())) {
             return new ResponseEntity(new Mensaje("Ese nombre ya existe"), HttpStatus.BAD_REQUEST);
         }
-        
+
         Educacion educacion = new Educacion(
                 dtoeducacion.getNombreE(), dtoeducacion.getDescripcionE()
-            );
+        );
         educacionS.save(educacion);
         return new ResponseEntity(new Mensaje("Educación creada"), HttpStatus.OK);
-                
+
     }
-    
+
     @PutMapping("/update/{id}")
-    public ResponseEntity<?> update(@PathVariable("id") int id, @RequestBody EducacionDto dtoeducacion){
-        if(!educacionS.existsById(id)){
+    public ResponseEntity<?> update(@PathVariable("id") int id, @RequestBody EducacionDto dtoeducacion) {
+        if (!educacionS.existsById(id)) {
             return new ResponseEntity(new Mensaje("No existe el ID"), HttpStatus.NOT_FOUND);
         }
-        if(educacionS.existsByNombreE(dtoeducacion.getNombreE()) && educacionS.getByNombreE(dtoeducacion.getNombreE()).get().getId() != id){
+        if (educacionS.existsByNombreE(dtoeducacion.getNombreE()) && educacionS.getByNombreE(dtoeducacion.getNombreE()).get().getId() != id) {
             return new ResponseEntity(new Mensaje("Ese nombre ya existe"), HttpStatus.BAD_REQUEST);
         }
-        if(StringUtils.isBlank(dtoeducacion.getNombreE())){
+        if (StringUtils.isBlank(dtoeducacion.getNombreE())) {
             return new ResponseEntity(new Mensaje("El campo no puede estar vacío"), HttpStatus.BAD_REQUEST);
         }
-        
+
         Educacion educacion = educacionS.getOne(id).get();
-        
+
         educacion.setNombreE(dtoeducacion.getNombreE());
         educacion.setDescripcionE(dtoeducacion.getDescripcionE());
-        
+
         educacionS.save(educacion);
-        
+
         return new ResponseEntity(new Mensaje("Educación actualizada"), HttpStatus.OK);
     }
 }

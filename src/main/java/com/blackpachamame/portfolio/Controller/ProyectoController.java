@@ -2,12 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.blackpachamame.portfolio.Controlador;
+package com.blackpachamame.portfolio.Controller;
 
 import com.blackpachamame.portfolio.Dto.ProyectoDto;
-import com.blackpachamame.portfolio.Entidad.Proyecto;
+import com.blackpachamame.portfolio.Entity.Proyecto;
 import com.blackpachamame.portfolio.Security.Controller.Mensaje;
-import com.blackpachamame.portfolio.Servicio.ProyectoService;
+import com.blackpachamame.portfolio.Service.ProyectoService;
 import java.util.List;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,9 +31,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/proyecto")
 @CrossOrigin(origins = "http://localhost:4200")
 public class ProyectoController {
+
     @Autowired
     ProyectoService proyectoS;
-    
+
     @GetMapping("/lista")
     public ResponseEntity<List<Proyecto>> list() {
         List<Proyecto> list = proyectoS.list();
@@ -49,52 +50,52 @@ public class ProyectoController {
         Proyecto proyecto = proyectoS.getOne(id).get();
         return new ResponseEntity(proyecto, HttpStatus.OK);
     }
-    
+
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<?> delete(@PathVariable("id") int id){
-        if(!proyectoS.existsById(id)){
+    public ResponseEntity<?> delete(@PathVariable("id") int id) {
+        if (!proyectoS.existsById(id)) {
             return new ResponseEntity(new Mensaje("No existe el ID"), HttpStatus.NOT_FOUND);
         }
         proyectoS.delete(id);
         return new ResponseEntity(new Mensaje("Proyecto eliminado"), HttpStatus.OK);
     }
-    
+
     @PostMapping("/create")
-    public ResponseEntity<?> create(@RequestBody ProyectoDto proyectodto){
-        if(StringUtils.isBlank(proyectodto.getNombre())){
+    public ResponseEntity<?> create(@RequestBody ProyectoDto proyectodto) {
+        if (StringUtils.isBlank(proyectodto.getNombre())) {
             return new ResponseEntity(new Mensaje("El nombre es obligatorio"), HttpStatus.BAD_REQUEST);
         }
-        if(proyectoS.existsByNombre(proyectodto.getNombre())){
+        if (proyectoS.existsByNombre(proyectodto.getNombre())) {
             return new ResponseEntity(new Mensaje("Ese nombre ya existe"), HttpStatus.BAD_REQUEST);
         }
-        
+
         Proyecto proyecto = new Proyecto(
                 proyectodto.getNombre(), proyectodto.getDescripcion()
-            );
+        );
         proyectoS.save(proyecto);
         return new ResponseEntity(new Mensaje("Proyecto creado"), HttpStatus.OK);
-                
+
     }
-    
+
     @PutMapping("/update/{id}")
-    public ResponseEntity<?> update(@PathVariable("id") int id, @RequestBody ProyectoDto proyectodto){
-        if(!proyectoS.existsById(id)){
+    public ResponseEntity<?> update(@PathVariable("id") int id, @RequestBody ProyectoDto proyectodto) {
+        if (!proyectoS.existsById(id)) {
             return new ResponseEntity(new Mensaje("No existe el ID"), HttpStatus.NOT_FOUND);
         }
-        if(proyectoS.existsByNombre(proyectodto.getNombre()) && proyectoS.getByNombre(proyectodto.getNombre()).get().getId() != id){
+        if (proyectoS.existsByNombre(proyectodto.getNombre()) && proyectoS.getByNombre(proyectodto.getNombre()).get().getId() != id) {
             return new ResponseEntity(new Mensaje("Ese nombre ya existe"), HttpStatus.BAD_REQUEST);
         }
-        if(StringUtils.isBlank(proyectodto.getNombre())){
+        if (StringUtils.isBlank(proyectodto.getNombre())) {
             return new ResponseEntity(new Mensaje("El campo no puede estar vacío"), HttpStatus.BAD_REQUEST);
         }
-        
+
         Proyecto proyecto = proyectoS.getOne(id).get();
-        
+
         proyecto.setNombre(proyectodto.getNombre());
         proyecto.setDescripcion(proyectodto.getDescripcion());
-        
+
         proyectoS.save(proyecto);
-        
+
         return new ResponseEntity(new Mensaje("Proyecto actualizado"), HttpStatus.OK);
     }
 }

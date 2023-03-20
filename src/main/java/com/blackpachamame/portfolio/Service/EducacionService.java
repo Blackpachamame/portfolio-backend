@@ -2,10 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.blackpachamame.portfolio.Servicio;
+package com.blackpachamame.portfolio.Service;
 
-import com.blackpachamame.portfolio.Entidad.Educacion;
-import com.blackpachamame.portfolio.Repositorio.IEducacionRepository;
+import com.blackpachamame.portfolio.Entity.Educacion;
+import com.blackpachamame.portfolio.Repository.IEducacionRepository;
 import jakarta.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
@@ -19,34 +19,35 @@ import org.springframework.stereotype.Service;
 @Service
 @Transactional
 public class EducacionService {
+
     @Autowired
     IEducacionRepository educacionR;
-    
-    public List<Educacion> list(){
+
+    public List<Educacion> list() {
         return educacionR.findAll();
     }
-    
-    public Optional<Educacion> getOne(int id){
+
+    public Optional<Educacion> getOne(int id) {
         return educacionR.findById(id);
     }
-    
-    public Optional<Educacion> getByNombreE(String nombreE){
+
+    public Optional<Educacion> getByNombreE(String nombreE) {
         return educacionR.findByNombreE(nombreE);
     }
-    
-    public void save(Educacion educacion){
+
+    public void save(Educacion educacion) {
         educacionR.save(educacion);
     }
-    
-    public void delete(int id){
+
+    public void delete(int id) {
         educacionR.deleteById(id);
     }
-    
-    public boolean existsById(int id){
+
+    public boolean existsById(int id) {
         return educacionR.existsById(id);
     }
-    
-    public boolean existsByNombreE(String nombreE){
+
+    public boolean existsByNombreE(String nombreE) {
         return educacionR.existsByNombreE(nombreE);
     }
 }

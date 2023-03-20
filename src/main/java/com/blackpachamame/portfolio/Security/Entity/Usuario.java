@@ -23,6 +23,7 @@ import java.util.Set;
  */
 @Entity
 public class Usuario {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -38,9 +39,8 @@ public class Usuario {
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "usuario_rol", joinColumns = @JoinColumn(name = "usuario_id"), inverseJoinColumns = @JoinColumn(name = "rol_id"))
     private Set<Rol> roles = new HashSet<>();
-    
-    //Constructor
 
+    //Constructor
     public Usuario() {
     }
 
@@ -50,9 +50,8 @@ public class Usuario {
         this.email = email;
         this.password = password;
     }
-    
-    // Getters and Setters
 
+    // Getters and Setters
     public int getId() {
         return id;
     }
@@ -100,5 +99,5 @@ public class Usuario {
     public void setRoles(Set<Rol> roles) {
         this.roles = roles;
     }
-    
+
 }

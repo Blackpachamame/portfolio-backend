@@ -11,6 +11,7 @@ import jakarta.validation.constraints.NotBlank;
  * @author Marcos
  */
 public class EducacionDto {
+
     @NotBlank
     private String nombreE;
     @NotBlank
@@ -39,6 +40,5 @@ public class EducacionDto {
     public void setDescripcionE(String descripcionE) {
         this.descripcionE = descripcionE;
     }
-    
-    
+
 }

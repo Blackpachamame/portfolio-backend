@@ -9,8 +9,9 @@ package com.blackpachamame.portfolio.Security.Controller;
  * @author Marcos
  */
 public class Mensaje {
+
     private String mensaje;
-    
+
     //Constructor
     public Mensaje() {
     }
@@ -18,7 +19,7 @@ public class Mensaje {
     public Mensaje(String mensaje) {
         this.mensaje = mensaje;
     }
-    
+
     //Getter y Setter
     public String getMensaje() {
         return mensaje;

@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.blackpachamame.portfolio.Entidad;
+package com.blackpachamame.portfolio.Entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -15,14 +15,14 @@ import jakarta.persistence.Id;
  */
 @Entity
 public class Experiencia {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String nombreE;
     private String descripcionE;
-    
-    //Constructores
 
+    //Constructores
     public Experiencia() {
     }
 
@@ -30,9 +30,8 @@ public class Experiencia {
         this.nombreE = nombreE;
         this.descripcionE = descripcionE;
     }
-    
-    //Getters and Setters
 
+    //Getters and Setters
     public int getId() {
         return id;
     }
@@ -56,5 +55,5 @@ public class Experiencia {
     public void setDescripcionE(String descripcionE) {
         this.descripcionE = descripcionE;
     }
-    
+
 }
