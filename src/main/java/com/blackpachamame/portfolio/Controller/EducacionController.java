@@ -70,7 +70,7 @@ public class EducacionController {
         }
 
         Educacion educacion = new Educacion(
-                dtoeducacion.getNombreE(), dtoeducacion.getDescripcionE()
+                dtoeducacion.getNombreE(), dtoeducacion.getDescripcionE(), dtoeducacion.getFechaIni(), dtoeducacion.getFechaFin()
         );
         educacionS.save(educacion);
         return new ResponseEntity(new Mensaje("Educación creada"), HttpStatus.OK);

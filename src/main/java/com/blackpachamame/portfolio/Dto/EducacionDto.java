@@ -16,13 +16,19 @@ public class EducacionDto {
     private String nombreE;
     @NotBlank
     private String descripcionE;
+    @NotBlank
+    private int fechaIni;
+    @NotBlank
+    private int fechaFin;
 
     public EducacionDto() {
     }
 
-    public EducacionDto(String nombreE, String descripcionE) {
+    public EducacionDto(String nombreE, String descripcionE, int fechaIni, int fechaFin) {
         this.nombreE = nombreE;
         this.descripcionE = descripcionE;
+        this.fechaIni = fechaIni;
+        this.fechaFin = fechaFin;
     }
 
     public String getNombreE() {
@@ -41,4 +47,21 @@ public class EducacionDto {
         this.descripcionE = descripcionE;
     }
 
+    public int getFechaIni() {
+        return fechaIni;
+    }
+
+    public void setFechaIni(int fechaIni) {
+        this.fechaIni = fechaIni;
+    }
+
+    public int getFechaFin() {
+        return fechaFin;
+    }
+
+    public void setFechaFin(int fechaFin) {
+        this.fechaFin = fechaFin;
+    }
+
+    
 }

@@ -44,7 +44,7 @@ public class SkillController {
     @GetMapping("/detail/{id}")
     public ResponseEntity<Skill> getById(@PathVariable("id") int id) {
         if (!skillS.existsById(id)) {
-            return new ResponseEntity(new Mensaje("no existe"), HttpStatus.NOT_FOUND);
+            return new ResponseEntity(new Mensaje("No existe el ID"), HttpStatus.NOT_FOUND);
         }
         Skill skill = skillS.getOne(id).get();
         return new ResponseEntity(skill, HttpStatus.OK);
@@ -53,10 +53,10 @@ public class SkillController {
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> delete(@PathVariable("id") int id) {
         if (!skillS.existsById(id)) {
-            return new ResponseEntity(new Mensaje("no existe"), HttpStatus.NOT_FOUND);
+            return new ResponseEntity(new Mensaje("No existe el ID"), HttpStatus.NOT_FOUND);
         }
         skillS.delete(id);
-        return new ResponseEntity(new Mensaje("Skill eliminado"), HttpStatus.OK);
+        return new ResponseEntity(new Mensaje("Skill eliminada"), HttpStatus.OK);
     }
 
     @PostMapping("/create")

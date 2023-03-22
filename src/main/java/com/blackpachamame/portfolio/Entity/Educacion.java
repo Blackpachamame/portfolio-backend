@@ -21,13 +21,17 @@ public class Educacion {
     private int id;
     private String nombreE;
     private String descripcionE;
+    private int fechaIni;
+    private int fechaFin;
 
     public Educacion() {
     }
 
-    public Educacion(String nombreE, String descripcionE) {
+    public Educacion(String nombreE, String descripcionE, int fechaIni, int fechaFin) {
         this.nombreE = nombreE;
         this.descripcionE = descripcionE;
+        this.fechaIni = fechaIni;
+        this.fechaFin = fechaFin;
     }
 
     public int getId() {
@@ -52,6 +56,22 @@ public class Educacion {
 
     public void setDescripcionE(String descripcionE) {
         this.descripcionE = descripcionE;
+    }
+
+    public int getFechaIni() {
+        return fechaIni;
+    }
+
+    public void setFechaIni(int fechaIni) {
+        this.fechaIni = fechaIni;
+    }
+
+    public int getFechaFin() {
+        return fechaFin;
+    }
+
+    public void setFechaFin(int fechaFin) {
+        this.fechaFin = fechaFin;
     }
 
 }
