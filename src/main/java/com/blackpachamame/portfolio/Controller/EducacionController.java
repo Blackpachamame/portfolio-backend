@@ -93,6 +93,8 @@ public class EducacionController {
 
         educacion.setNombreE(dtoeducacion.getNombreE());
         educacion.setDescripcionE(dtoeducacion.getDescripcionE());
+        educacion.setFechaIni(dtoeducacion.getFechaIni());
+        educacion.setFechaFin(dtoeducacion.getFechaFin());
 
         educacionS.save(educacion);
 
