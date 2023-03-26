@@ -70,7 +70,7 @@ public class EducacionController {
         }
 
         Educacion educacion = new Educacion(
-                dtoeducacion.getNombreE(), dtoeducacion.getDescripcionE(), dtoeducacion.getFechaIni(), dtoeducacion.getFechaFin()
+                dtoeducacion.getNombreE(), dtoeducacion.getDescripcionE(), dtoeducacion.getFechaIni(), dtoeducacion.getFechaFin(), dtoeducacion.getImg()
         );
         educacionS.save(educacion);
         return new ResponseEntity(new Mensaje("Educación creada"), HttpStatus.OK);
@@ -95,6 +95,7 @@ public class EducacionController {
         educacion.setDescripcionE(dtoeducacion.getDescripcionE());
         educacion.setFechaIni(dtoeducacion.getFechaIni());
         educacion.setFechaFin(dtoeducacion.getFechaFin());
+        educacion.setImg(dtoeducacion.getImg());
 
         educacionS.save(educacion);
 

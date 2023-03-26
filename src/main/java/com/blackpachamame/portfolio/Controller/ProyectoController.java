@@ -70,7 +70,7 @@ public class ProyectoController {
         }
 
         Proyecto proyecto = new Proyecto(
-                proyectodto.getNombre(), proyectodto.getDescripcion()
+                proyectodto.getNombre(), proyectodto.getDescripcion(), proyectodto.getImg(), proyectodto.getLink()
         );
         proyectoS.save(proyecto);
         return new ResponseEntity(new Mensaje("Proyecto creado"), HttpStatus.OK);
@@ -93,6 +93,8 @@ public class ProyectoController {
 
         proyecto.setNombre(proyectodto.getNombre());
         proyecto.setDescripcion(proyectodto.getDescripcion());
+        proyecto.setImg(proyectodto.getImg());
+        proyecto.setLink(proyectodto.getLink());
 
         proyectoS.save(proyecto);
 

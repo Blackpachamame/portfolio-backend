@@ -23,15 +23,17 @@ public class Educacion {
     private String descripcionE;
     private int fechaIni;
     private int fechaFin;
+    private String img;
 
     public Educacion() {
     }
 
-    public Educacion(String nombreE, String descripcionE, int fechaIni, int fechaFin) {
+    public Educacion(String nombreE, String descripcionE, int fechaIni, int fechaFin, String img) {
         this.nombreE = nombreE;
         this.descripcionE = descripcionE;
         this.fechaIni = fechaIni;
         this.fechaFin = fechaFin;
+        this.img = img;
     }
 
     public int getId() {
@@ -72,6 +74,14 @@ public class Educacion {
 
     public void setFechaFin(int fechaFin) {
         this.fechaFin = fechaFin;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
     }
 
 }

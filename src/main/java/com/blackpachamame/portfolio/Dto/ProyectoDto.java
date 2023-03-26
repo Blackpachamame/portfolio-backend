@@ -16,13 +16,19 @@ public class ProyectoDto {
     private String nombre;
     @NotBlank
     private String descripcion;
+    @NotBlank
+    private String img;
+    @NotBlank
+    private String link;
 
     public ProyectoDto() {
     }
 
-    public ProyectoDto(String nombre, String descripcion) {
+    public ProyectoDto(String nombre, String descripcion, String img, String link) {
         this.nombre = nombre;
         this.descripcion = descripcion;
+        this.img = img;
+        this.link = link;
     }
 
     public String getNombre() {
@@ -39,6 +45,22 @@ public class ProyectoDto {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
+    }
+
+    public String getLink() {
+        return link;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
     }
 
 }

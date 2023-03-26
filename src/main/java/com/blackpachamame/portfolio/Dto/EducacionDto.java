@@ -20,15 +20,18 @@ public class EducacionDto {
     private int fechaIni;
     @NotBlank
     private int fechaFin;
+    @NotBlank
+    private String img;
 
     public EducacionDto() {
     }
 
-    public EducacionDto(String nombreE, String descripcionE, int fechaIni, int fechaFin) {
+    public EducacionDto(String nombreE, String descripcionE, int fechaIni, int fechaFin, String img) {
         this.nombreE = nombreE;
         this.descripcionE = descripcionE;
         this.fechaIni = fechaIni;
         this.fechaFin = fechaFin;
+        this.img = img;
     }
 
     public String getNombreE() {
@@ -63,5 +66,13 @@ public class EducacionDto {
         this.fechaFin = fechaFin;
     }
 
-    
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
+    }
+
+        
 }
